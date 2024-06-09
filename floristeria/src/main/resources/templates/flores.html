@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Flores</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="~{layout :: content}">
+    </div>
+    <div class="container">
+        <h2>Lista de Flores</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="flor : ${flores}">
+                    <td th:text="${flor.id}"></td>
+                    <td th:text="${flor.nombre}"></td>
+                    <td th:text="${flor.precio}"></td>
+                    <td>
+                        <img th:src="@{${flor.imagePath}}" alt="Imagen de la flor" style="max-height: 100px; max-width: 100px;"/>
+                       
+                    </td>
+                    <span th:text="${flor.imagePath}"></span> <br>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+        <div th:if="${message}">
+            <h2 th:text="${message}"></h2>
+        </div>
+    </div>
+        
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+</body>
+</html>
